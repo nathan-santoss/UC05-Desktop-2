@@ -10,16 +10,10 @@
     <p>Digite um número abaixo:</p>
     <input type="text" id="caixa" placeholder="digite aqui">
     <br><br>
-    <button id="enviar" onclick=checarNumero()></button>
+    <button id="enviar" onclick=checarNumero()>CHECAR</button>
     <br><br>
     <h1 id="result"></h1>
-    <script>
-        const checarNumero = () => {
-            const num = document.getElementById('caixa').value
-            if(isNaN(num)){document.getElementById('result').innerHTML = `Não banque o esperto. Digite um número :)`}
-            else if(num >= 0){ document.getElementById('result').innerHTML = `O número ${num} é POSITIVO`}
-            else{document.getElementById('result').innerHTML = `O número ${num} é NEGATIVO`}
-        }
-    </script>
+
+    <script src="funcoes.js"></script>
 </body>
 </html>
