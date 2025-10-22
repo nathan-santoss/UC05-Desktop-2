@@ -1,0 +1,15 @@
+{
+  "name": "atividade-2",
+  "version": "1.0.0",
+  "description": "calcular notas",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js"
+  },
+  "author": "nathan",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^38.4.0"
+  }
+}
