@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from "electron";
 
 const criarJanela = () => {
-    const janela = new BrowserWindow( {width: 600, height: 800})
+    const janela = new BrowserWindow( {width: 800, height: 500})
     janela.loadFile('./index.html')
     janela.setMenu(null)
 }

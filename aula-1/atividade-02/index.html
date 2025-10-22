@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calcular notas</title>
+    <script src="./funcoes.js"></script>
 </head>
 <body>
+    <h1>Calculo de notas</h1>
+    <div id="nota-1-div">
+        <label for="nota">Nota 1:</label>
+            <input type="text" id="nota1" placeholder="Primeiro bimestre">
+            <br><br>
+            <button id="send" onclick="guardarNota1()">Enviar</button>
+            <br><br>
+    </div>
+
+    
+    <div id="nota-2-div" style="display: none;">
+        <label for="nota">Nota 2:</label>
+            <input type="text" id="nota2" placeholder="Segundo bimestre">
+            <br><br>
+            <button id="send" onclick="guardarNota2()">Enviar</button>
+            <br><br>
+    </div>
+    
+    <div id="result-div" style="display: none;">
+        <h1 id="result"></h1>
+    </div>
+
+    <div id="reset-div" style="display: none;">
+        <h1>Deseja calcular novamente?</h1>
+        <button onclick="concordou()">Sim</button>
+        <button onclick="encerrar()">Não</button>
+    </div>
+    
     
 </body>
 </html>
