@@ -1,0 +1,16 @@
+{
+  "name": "atividade-3",
+  "version": "1.0.0",
+  "description": "calcular temperatura",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js"
+  },
+  "author": "nathan",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^31.2.0"
+  }
+}
