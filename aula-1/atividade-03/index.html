@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular temperatura</title>
+
+    <script src="funcoes.js"></script>
+</head>
+<body>
+    <h1>Conversor de temperatura</h1>
+    <div id="celcius-div">
+        <label for="temp">Digite a temperatura em Celsius</label>
+        <input type="text" placeholder="digite aqui" id="entrada-celcius"><br><br>
+        <button onclick="fahrenheit()">Fahrenheit</button>
+        <button onclick="kelvin()">Kelvin</button>
+    </div>
+    <br><br>
+    <div id="resultado-div" style="display: none;">
+        <p id="resultado"></p>
+    </div>
+</body>
+</html>
