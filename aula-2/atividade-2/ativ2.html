@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1</title>
+    <script src="funcoes.js"></script>
+</head>
+<body>
+    <div class="bimestre">
+        <label for="nota">Primeiro Bimestre: </label>
+        <input id="bimestre1" type="number" placeholder="Apenas números"><br><br>
+    </div>
+    <div class="bimestre">
+        <label for="nota">Segundo Bimestre: </label>
+        <input id="bimestre2" type="number" placeholder="Apenas números"><br><br>
+    </div>
+    <div  class="bimestre">
+        <label for="nota">Terceiro Bimestre: </label>
+        <input id="bimestre3" type="number" placeholder="Apenas números"><br><br>
+    </div>
+    <div class="bimestre">
+        <label for="nota">Quarto Bimestre: </label>
+        <input id="bimestre4" type="number" placeholder="Apenas números"><br><br>
+        <button onclick="calcular()">Enviar notas</button>
+    </div>
+    <div style="display: none" id="resultado-div">
+        <h1 id="resultado"></h1>
+        <button onclick="reiniciar()">Novo</button>
+        <br><br>
+    </div>
+    <a href="../index.html" id="link-return">
+        <button >Inicio</button>
+    </a>
+</body>
+</html>

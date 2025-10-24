@@ -1,0 +1,16 @@
+{
+  "name": "aula-2",
+  "version": "1.0.0",
+  "description": "atividades da aula 2",
+  "license": "ISC",
+  "author": "nathan",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js"
+  },
+  "dependencies": {
+    "electron": "^38.4.0"
+  }
+}
