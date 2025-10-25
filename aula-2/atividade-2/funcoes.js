@@ -19,9 +19,22 @@ const calcular = () => {
         document.getElementById('resultado').innerHTML = `Preencha corretamente as notas!`
         return
     }
-    let resultado = notas.reduce((ac, nota) => ac + Number(nota), 0)
-    document.getElementById('resultado').innerHTML = `O resultado da média do aluno é = ${resultado}`
+    let resultado = (notas.reduce((ac, nota) => ac + Number(nota), 0))/4
     
+    if(resultado >= 7){
+        document.getElementById('resultado').innerHTML = `
+        O resultado da média do aluno é = ${resultado}`
+        document.getElementById('situacao').innerHTML = `O aluno está APROVADO!`
+        return
+    }
+    else if(resultado >= 4 && resultado <= 6.9 ){
+        document.getElementById('resultado').innerHTML = `O resultado da média do aluno é = ${resultado}`
+        document.getElementById('situacao').innerHTML = `O aluno está em RECUPERAÇÃO!`
+        return
+    }
+    
+    document.getElementById('resultado').innerHTML = `O resultado da média do aluno é = ${resultado}`
+    document.getElementById('situacao').innerHTML = `O aluno está REPROVADO!`
 }
 
 const reiniciar = () => {
