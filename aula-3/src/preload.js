@@ -1,10 +1,11 @@
 import { contextBridge } from "electron"
+console.log('Preload carregado')
 
 let numeroSorteado
-contextBridge.exposeInIsolatedWorld('api', {
+contextBridge.exposeInMainWorld('api', {
     name: 'Jogo de Adivinhação',
     version: '1.0.0',
-    sortear: () => {if(numeroSorteado === null || numeroSorteado === undefined){numeroSorteado = sortearNum()}},
+    sortear: () => numeroSorteado = sortearNum(),
     pegarNum: () => numeroSorteado
     
 })

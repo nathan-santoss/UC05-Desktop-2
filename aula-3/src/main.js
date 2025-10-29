@@ -11,11 +11,14 @@ const criarJanela = () => {
         webPreferences:{
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: false,
-            contextIsolation: true
-        }
+            contextIsolation: true,
+            devTools: true,
+            sandbox: false
+        },
     })
     janela.setMenu(null)
-    janela.loadFile('../app/index.html')
+    janela.loadFile(path.join(__dirname, '../app/index.html'))
+    janela.webContents.openDevTools()
     
 }
 

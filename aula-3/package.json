@@ -1,0 +1,16 @@
+{
+  "name": "aula-3",
+  "version": "1.0.0",
+  "description": "jogo de adivinhação",
+  "main": "./src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx electronmon . --watch . --watch ../app --ext js,html"
+  },
+  "dependencies": {
+    "electron": "^39.0.0"
+  },
+  "devDependencies": {
+    "electronmon": "^2.0.4"
+  }
+}
