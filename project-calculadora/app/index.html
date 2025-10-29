@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+        .teclado {
+            display: grid;
+            grid-template-columns: repeat(6, 60px);
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .teclado button {
+            height: 60px;
+            width: 60px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #aaa;
+            background: #eee;
+            transition: background 0.2s;
+        }
+
+        .teclado button:hover {
+            background: #ccc;
+        }
+
+        
+        button.ce {
+         grid-column: 2 / span 3; 
+        }
+
+
+
+
+        
+        
+
+        
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div>
+        <input type="text" id="caixa" readonly>
+    </div>
+    <div class="teclado" id="teclado">
+        
+        <div id="numeros">
+            <button id="botao">0</button>
+            <button id="botao">1</button>
+            <button id="botao">2</button>
+            <button id="botao">3</button>
+            <button id="botao">4</button>
+            <button id="botao">5</button>
+            <button id="botao">6</button>
+            <button id="botao">7</button>
+            <button id="botao">8</button>
+            <button id="botao">9</button>
+        </div>
+        <div class="componentes">
+            <button class="op"> + </button>
+            <button class="op"> - </button>
+            <button class="op"> / </button>
+            <button class="op"> X </button>
+            <button class="op"> % </button>
+            <button class="op"> = </button>
+            <button class="op"> CE </button>
+        </div>
+        
+    </div>
+
+
+    <script src="renderer.js"></script>
+</body>
+</html>
