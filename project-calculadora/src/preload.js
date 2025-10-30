@@ -4,5 +4,5 @@ let resultado
 contextBridge.exposeInMainWorld('api',{
     name: 'calculator',
     operar: (entrada) => resultado = eval(entrada),
-    resolucao: () => resultado
+    resolucao: () => resultado.toFixed(2)
 })
