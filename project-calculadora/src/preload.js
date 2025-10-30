@@ -1,23 +1,8 @@
 import { contextBridge } from "electron"
 
+let resultado
 contextBridge.exposeInMainWorld('api',{
     name: 'calculator',
-
+    operar: (entrada) => resultado = eval(entrada),
+    resolucao: () => resultado
 })
-
-const captacao = () => {
-    const caixa = document.getElementById('caixa')
-    const teclado = document.getElementById('teclado')
-
-    teclado.addEventListener('click', (event) => {
-        const botao = event.target.textContent;
-        if(botao === 'CE'){display.value}
-        else if( botao === '='){
-            
-        }
-    })
-}
-
-const calcular = () => {
-
-}

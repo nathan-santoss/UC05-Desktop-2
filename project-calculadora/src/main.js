@@ -7,15 +7,18 @@ const __dirname = path.dirname(__filename)
 
 const criarJanela = () => {
     const janela = new BrowserWindow({
-        width: 800, height: 600,
+        fullscreen: true,
         webPreferences:{
             nodeIntegration: false,
             contextIsolation: true,
+            devTools: true,
             sandbox: false,
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'preload.js'),
         }
     })
+   
     janela.setMenu(null);
+    janela.webContents.openDevTools()
     janela.loadFile(path.join(__dirname,'../app/index.html'))
 
 }
