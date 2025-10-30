@@ -1,80 +1,154 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculadora Electron</title>
+    
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        .teclado {
-            display: grid;
-            grid-template-columns: repeat(6, 60px);
-            gap: 8px;
+        body {
+            margin: 0;
+            display: flex;
             justify-content: center;
-            margin-top: 20px;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Roboto', sans-serif;
         }
 
-        .teclado button {
-            height: 60px;
-            width: 60px;
-            font-size: 18px;
-            border-radius: 5px;
+        .corpo-calculadora {
+            width: 320px;
+            background-color: #282a36;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .tela {
+            width: 100%;
+            height: 70px;
+            background-color: #1a1c24;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #f8f8f2;
+            font-size: 2.5em;
+            text-align: right;
+            padding: 0 10px;
+            box-sizing: border-box;
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        /* Grade 5x4 */
+        .grade-teclas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .botao {
+            background-color: #44475a;
+            color: #f8f8f2;
+            border: none;
+            border-radius: 10px;
+            padding: 20px 0;
+            font-size: 1.3em;
             cursor: pointer;
-            border: 1px solid #aaa;
-            background: #eee;
-            transition: background 0.2s;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
         }
 
-        .teclado button:hover {
-            background: #ccc;
+        .botao:hover {
+            background-color: #55586a;
+            transform: translateY(-2px);
         }
 
-        
-        button.ce {
-         grid-column: 2 / span 3; 
+        .botao:active {
+            transform: translateY(0);
+            background-color: #3e4153;
         }
 
+        /* Estilos de Botões */
+        .botao-limpar {
+            background-color: #ff5555;
+        }
+        .botao-limpar:hover {
+            background-color: #ff7b7b;
+        }
 
+        .botao-operador {
+            background-color: #50fa7b;
+            color: #282a36;
+        }
+        .botao-operador:hover {
+            background-color: #8affaa;
+        }
 
+        .botao-zero {
+            grid-column: span 2; 
+            text-align: left;
+            padding-left: 30px; 
+            justify-content: flex-start;
+        }
 
+        /* O botão de SOMA (+) agora ocupa duas linhas */
+        .botao-mais-alto {
+            grid-row: span 2; 
+            background-color: #50fa7b;
+            color: #282a36;
+        }
         
-        
+        /* O botão de IGUAL (=) ocupa duas linhas */
+        .botao-igual-alto {
+            grid-row: span 2; 
+            background-color: #bd93f9;
+        }
+        .botao-igual-alto:hover {
+            background-color: #d1b4ff;
+        }
 
-        
+        .botao-operador, .botao-limpar, .botao-igual-alto {
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
-    <h1>Calculator</h1>
-    <div>
-        <input type="text" id="caixa" readonly>
-    </div>
-    <div class="teclado" id="teclado">
+    <div class="corpo-calculadora">
         
-        <div id="numeros">
-            <button id="botao">0</button>
-            <button id="botao">1</button>
-            <button id="botao">2</button>
-            <button id="botao">3</button>
-            <button id="botao">4</button>
-            <button id="botao">5</button>
-            <button id="botao">6</button>
-            <button id="botao">7</button>
-            <button id="botao">8</button>
-            <button id="botao">9</button>
-        </div>
-        <div class="componentes">
-            <button class="op"> + </button>
-            <button class="op"> - </button>
-            <button class="op"> / </button>
-            <button class="op"> X </button>
-            <button class="op"> % </button>
-            <button class="op"> = </button>
-            <button class="op"> CE </button>
-        </div>
+        <input type="text" id="caixa" class="tela" value="" readonly>
         
+        <div id="teclado" class="grade-teclas">
+            <button class="botao botao-limpar" style="grid-column: span 2;">CE</button>
+            <button class="botao botao-operador">/</button>
+            <button class="botao botao-operador">*</button>
+
+            <button class="botao">7</button>
+            <button class="botao">8</button>
+            <button class="botao">9</button>
+            <button class="botao botao-operador">-</button>
+
+            <button class="botao">4</button>
+            <button class="botao">5</button>
+            <button class="botao">6</button>
+            <button class="botao botao-operador botao-mais-alto">+</button>
+
+            <button class="botao">1</button>
+            <button class="botao">2</button>
+            <button class="botao">3</button>
+            <button class="botao botao-zero">0</button>
+            <button class="botao botao-decimal">.</button>
+            
+            <button id="igual" class="botao botao-igual-alto">=</button> 
+        </div>
     </div>
 
-
-    <script src="renderer.js"></script>
+    <script src="./renderer.js"></script> 
 </body>
 </html>
