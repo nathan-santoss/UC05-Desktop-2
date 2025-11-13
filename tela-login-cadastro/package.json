@@ -1,0 +1,25 @@
+{
+  "name": "tela-login-cadastro",
+  "version": "1.0.0",
+  "description": "tela de loigin ou cadastro",
+  "homepage": "https://github.com/nathan-santoss/UC05-Desktop-2#readme",
+  "bugs": {
+    "url": "https://github.com/nathan-santoss/UC05-Desktop-2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathan-santoss/UC05-Desktop-2.git"
+  },
+  "license": "ISC",
+  "author": "nathan-santos",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electronmon src/main.js"
+  },
+  "dependencies": {
+    "electron": "^39.1.2",
+    "electronmon": "^2.0.4"
+  }
+}
