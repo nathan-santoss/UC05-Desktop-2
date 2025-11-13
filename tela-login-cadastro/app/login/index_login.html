@@ -6,7 +6,26 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>CARREGOU -- login -- IHUUUL</h1>
+    <h1>Login de usuário</h1>
+    <div id="login-user">
+        <!-- nome do usuario -->
+        <ol>
+            <input type="text" placeholder="Usuário" id="user">
+        </ol>
+
+        <!-- senha do usuario -->
+        <ol>
+            <input type="text" placeholder="Senha" id="pass">
+        </ol>
+
+        <!-- botao de login -->
+        <ol>
+            <button onclick="realizarLogin()">LOGIN</button>
+        </ol>
+    </div>
+    <div id="recep" style="display: none;"">
+        <h1 id="user-logado"></h1>
+    </div>
     <script src="renderer.js"></script>
 </body>
 </html>

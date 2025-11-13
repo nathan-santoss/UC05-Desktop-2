@@ -1,5 +1,6 @@
 import {app, BrowserWindow, ipcMain, dialog, Menu} from 'electron'
 import * as path from 'path'
+import { title } from 'process'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -53,14 +54,13 @@ const criarJanela_login = () => {
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            devTools: false,
             sandbox: false,
             preload: __preload
         }
     })
     html = path.join(__dirname, '../app/login/index_login.html')
     janela_login.loadFile(html)
-    // janela.webContents.openDevTools()
+    janela_login.webContents.openDevTools()
     janela_login.setMenu(null)
 }
 app.whenReady().then(() => {
@@ -73,15 +73,51 @@ app.whenReady().then(() => {
 
 let clientes = [] // array de objetos (pessoas)
 
-ipcMain.on('mudarPagina', (event, destino) => {
-    janela_inicial.close()
-    if(destino === 'Cadastro'){criarJanela_cadastro()}
-    else if(destino === 'Login'){criarJanela_login()}
-    else{criarJanela_inicial()}
+ipcMain.on('mudarPagina', (event, origem, destino) => {
+    if(origem === 'inicio' && destino === 'Cadastro'){
+        janela_inicial.close()
+        criarJanela_cadastro()
+    }
+    else if(origem === 'inicio' && destino === 'Login'){
+        janela_inicial.close()
+        criarJanela_login()
+    }
+    else if(origem === 'Cadastro'){
+        janela_cadastro.close()
+        criarJanela_inicial()
+    }
 })
-
+// funcionalidade para guardar o cadastro do cliente >>>>
 ipcMain.on('guardar-cliente', (event, cliente) => clientes.push(cliente))
 
 
+// modificação de alertas da janela >>>>>>
+ipcMain.on('enviandoAlerta', (event, conteudo) => {
+    const meuAlerta = {
+        type: 'info',
+        title: undefined,
+        message: undefined
+    }
+    if(conteudo === 'dadosVazios'){
+        meuAlerta.title = 'DADOS INVÁLIDOS!'
+        meuAlerta.message = 'É necessário preencher todos os dados do formulário!'
+    }
+    else if(conteudo === 'senhasInvalidas'){
+        meuAlerta.title = 'DADOS INVÁLIDOS!'
+        meuAlerta.message = 'As senhas digitadas não coincidem'
+    }
+    dialog.showMessageBox(meuAlerta)
+})
+
+// checagem de dados do cliente >>>>>>>>>>
+ipcMain.on('checandoCliente', (event, cliente) => {
+    const clienteEncontrado = clientes.find(c => c.login_user === cliente.usuario && c.senha1 === cliente.senha)
+    if(clienteEncontrado){
+        event.reply('resultado-checagem', clienteEncontrado)
+    }
+    else{
+        event.reply('resultado-checagem', 'inválido')
+    }
+})
 
 
