@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain, dialog, Menu, ipcMain} from 'electron'
+import {app, BrowserWindow, ipcMain, dialog, Menu} from 'electron'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -45,13 +45,36 @@ const criarJanela_cadastro = () => {
 
 }
 
+// janela de login abaixo
+let janela_login = null
+const criarJanela_login = () => {
+    janela_login = new BrowserWindow({
+        width: 800, height: 600,
+        webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+            devTools: false,
+            sandbox: false,
+            preload: __preload
+        }
+    })
+    html = path.join(__dirname, '../app/login/index_login.html')
+    janela_login.loadFile(html)
+    // janela.webContents.openDevTools()
+    janela_login.setMenu(null)
+}
+
 
 app.whenReady().then(() => {
     criarJanela_inicial()
 })
 
 
-ipcMain.on('inicial-cadastro', (event) => {
+ipcMain.on('mudarPagina', (event, destino) => {
     janela_inicial.close()
-    criarJanela_cadastro()
+    if(destino === 'Cadastro'){criarJanela_cadastro()}
+    else{criarJanela_login()}
 })
+
+
+

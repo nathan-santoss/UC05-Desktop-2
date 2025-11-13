@@ -6,6 +6,46 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>CARREGOU IHUUUL</h1>
+    <h1>Cadastro de novo usuário</h1>
+    <form action="#">
+        <!-- nome do cadastro -->
+        <ol>
+            <label for="nome-cadastro">Nome: </label>
+            <input type="text" id="caixa-nome" placeholder="Digite aqui">
+        </ol>
+
+        <!-- data de nascimento -->
+        <ol>
+            <label for="nascimento-cadastro">Data de Nascimento: </label>
+            <input type="text" id="caixa-nascimento" placeholder="Digite aqui">
+        </ol>
+
+        <!-- email do cadastro -->
+        <ol>
+            <label for="email-cadastro">E-mail: </label>
+            <input type="text" id="caixa-email" placeholder="Digite aqui">
+        </ol>
+        <!-- login do usuario -->
+        <ol>
+            <label for="login-cadastro">Nome de usuário: </label>
+            <input type="text" id="caixa-login" placeholder="Digite aqui">
+        </ol>
+
+        <!-- senha do cadastro -->
+        <ol>
+            <label for="senha-cadastro">Senha: </label>
+            <input type="text" id="caixa-senha" placeholder="Digite aqui" style="margin-bottom: 10px;"><br>
+            <!-- a segunda senha abaixo -->
+            <label for="senha-cadastro">Repita a senha: </label>
+            <input type="text" id="caixa-senha2" placeholder="Digite aqui">
+        </ol><br>
+
+        <!-- botao para enviar os dados do formulario -->
+        <button onclick="enviarDados()">Finalizar</button>
+
+    </form>
+
+
+    <script src="renderer.js"></script>
 </body>
 </html>
