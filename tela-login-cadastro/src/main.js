@@ -63,18 +63,25 @@ const criarJanela_login = () => {
     // janela.webContents.openDevTools()
     janela_login.setMenu(null)
 }
-
-
 app.whenReady().then(() => {
     criarJanela_inicial()
 })
 
+// ACIMA ESTÃO AS CONFIGURAÇÕES DAS JANELAS
+
+// ABAIXO ESTÃO AS CONFIGURAÇÕES DO Main.JS
+
+let clientes = [] // array de objetos (pessoas)
 
 ipcMain.on('mudarPagina', (event, destino) => {
     janela_inicial.close()
     if(destino === 'Cadastro'){criarJanela_cadastro()}
-    else{criarJanela_login()}
+    else if(destino === 'Login'){criarJanela_login()}
+    else{criarJanela_inicial()}
 })
+
+ipcMain.on('guardar-cliente', (event, cliente) => clientes.push(cliente))
+
 
 
 

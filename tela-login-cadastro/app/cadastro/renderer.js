@@ -1,4 +1,9 @@
 const enviarDados = () => {
+    const caixas = document.querySelectorAll('input')
+    const vazio = caixas.some(caixa => caixa.value === '')
+    if(vazio){
+        alert('Preencha todos os dados!')
+        return}
     const pessoa = {
         nome: (document.getElementById('caixa-nome').value).trim(),
         dat_nasc: (document.getElementById('caixa-nascimento').value).trim(),
@@ -11,5 +16,6 @@ const enviarDados = () => {
         alert('A senhas não conferem!')
         return
     }
-    
+    window.api.guardarCliente(pessoa)
+    window.api.mudarPagina('inicio')
 }
