@@ -9,12 +9,8 @@ const realizarLogin = () => {
     console.log('cliente teste enviado = ', cliente)
 
     window.api.resultado((event, pessoa) =>{
-        if(pessoa === 'inválido'){
-            alert('Usuário inválido!') 
-            return
-        }
         document.getElementById('login-user').style.display = 'none'
         document.getElementById('recep').style.display = 'block'
-        document.getElementById("user-logado").innerHTML = `Bem vindo ${pessoa.nome}!`
+        document.getElementById("user-logado").innerHTML = `Bem vindo ${pessoa.nome.toUpperCase()}!`
     })
 }

@@ -23,5 +23,6 @@ const enviarDados = () => {
         return
     }
     window.api.guardarCliente(pessoa)
+    window.api.alerta('cadastro-efetuado')
     window.api.mudarPagina('Cadastro', 'inicio')
 }

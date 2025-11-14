@@ -24,7 +24,6 @@ const criarJanela_inicial = () => {
     janela_inicial.loadFile(html)
     // janela.webContents.openDevTools()
     janela_inicial.setMenu(null)
-
 }
 // janela de cadastro abaixo
 let janela_cadastro = null
@@ -60,11 +59,12 @@ const criarJanela_login = () => {
     })
     html = path.join(__dirname, '../app/login/index_login.html')
     janela_login.loadFile(html)
-    janela_login.webContents.openDevTools()
+    // janela_login.webContents.openDevTools()
     janela_login.setMenu(null)
 }
 app.whenReady().then(() => {
     criarJanela_inicial()
+    inializacao()
 })
 
 // ACIMA ESTÃO AS CONFIGURAÇÕES DAS JANELAS
@@ -90,14 +90,19 @@ ipcMain.on('mudarPagina', (event, origem, destino) => {
 // funcionalidade para guardar o cadastro do cliente >>>>
 ipcMain.on('guardar-cliente', (event, cliente) => clientes.push(cliente))
 
-
 // modificação de alertas da janela >>>>>>
-ipcMain.on('enviandoAlerta', (event, conteudo) => {
-    const meuAlerta = {
+let meuAlerta = {
         type: 'info',
         title: undefined,
         message: undefined
-    }
+}
+const inializacao = () => {
+    meuAlerta.title = 'Bem vindo!'
+    meuAlerta.message = 'Aplicação iniciada. Siga as instruções na tela!'
+    dialog.showMessageBox(meuAlerta)
+}
+
+ipcMain.on('enviandoAlerta', (event, conteudo) => {
     if(conteudo === 'dadosVazios'){
         meuAlerta.title = 'DADOS INVÁLIDOS!'
         meuAlerta.message = 'É necessário preencher todos os dados do formulário!'
@@ -105,6 +110,10 @@ ipcMain.on('enviandoAlerta', (event, conteudo) => {
     else if(conteudo === 'senhasInvalidas'){
         meuAlerta.title = 'DADOS INVÁLIDOS!'
         meuAlerta.message = 'As senhas digitadas não coincidem'
+    }
+    else if(conteudo === 'cadastro-efetuado'){
+        meuAlerta.title = 'Formulário preenchido'
+        meuAlerta.message = 'Cadastro realizado com sucesso. Siga para o login!'
     }
     dialog.showMessageBox(meuAlerta)
 })
@@ -114,10 +123,17 @@ ipcMain.on('checandoCliente', (event, cliente) => {
     const clienteEncontrado = clientes.find(c => c.login_user === cliente.usuario && c.senha1 === cliente.senha)
     if(clienteEncontrado){
         event.reply('resultado-checagem', clienteEncontrado)
+        return
+    }
+    else if(cliente === ''){
+        meuAlerta.title = 'DADOS INVÁLIDOS!'
+        meuAlerta.message = 'Preencha os dados do login!'
     }
     else{
-        event.reply('resultado-checagem', 'inválido')
+        meuAlerta.title = 'DADOS INVÁLIDOS!'
+        meuAlerta.message = 'Usuário ou senha incorretos. Verifique novamente!'
     }
+    dialog.showMessageBox(meuAlerta)
 })
 
 
